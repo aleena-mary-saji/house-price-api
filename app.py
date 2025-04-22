@@ -18,5 +18,9 @@ def predict():
     prediction = model.predict([[rm, lstat, ptratio]])
     return jsonify({"predicted_price": round(prediction[0], 2)})
 
-if __name__ == "__main__":
-    app.run(debug=True)
+import os
+
+if __name__ == '__main__':
+    port = int(os.environ.get("PORT", 5000))
+    app.run(debug=True, host='0.0.0.0', port=port)
+
